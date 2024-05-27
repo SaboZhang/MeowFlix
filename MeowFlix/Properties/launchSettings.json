@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MeowFlix (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "MeowFlix (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

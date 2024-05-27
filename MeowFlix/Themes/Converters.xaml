@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:common="using:MeowFlix.Common"
+                    xmlns:converter="using:CommunityToolkit.WinUI.UI.Converters">
+
+    <common:StringExtensions2VisibilityConverter x:Key="StringExtensions2VisibilityConverter" />
+    <common:FileExtension2IconConverter x:Key="FileExtension2IconConverter" />
+    <common:ImageLocationConverter x:Key="ImageLocationConverter" />
+    <common:String2FileSizeConverter x:Key="String2FileSizeConverter" />
+    <common:Bool2IconConverter x:Key="Bool2IconConverter" />
+    <common:String2StyleConverter x:Key="String2StyleConverter" />
+    <common:Bool2Negation2VisibilityConverter x:Key="Bool2Negation2VisibilityConverter" />
+    <common:MediaHeaderIconConverter x:Key="MediaHeaderIconConverter" />
+    <common:DetailHeaderIconConverter x:Key="DetailHeaderIconConverter" />
+    <common:FontIconConverter x:Key="FontIconConverter"/>
+    <common:BaseMediaConverter x:Key="BaseMediaConverter"/>
+
+    <converter:BoolNegationConverter x:Key="BoolNegationConverter" />
+    <converter:StringVisibilityConverter x:Key="StringVisibilityConverter" />
+    <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+</ResourceDictionary>

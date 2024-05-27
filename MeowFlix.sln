@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeowFlix", "MeowFlix\MeowFlix.csproj", "{F4633F66-8EFD-49EA-A29C-637DD583C420}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4BE2218A-1C46-4010-9861-2D1D4AD20FD7}"
+	ProjectSection(SolutionItems) = preProject
+		MeowFlix\.editorconfig = MeowFlix\.editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|Any CPU.Build.0 = Debug|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|ARM64.Build.0 = Debug|ARM64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|x64.ActiveCfg = Debug|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|x64.Build.0 = Debug|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|x64.Deploy.0 = Debug|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|x86.ActiveCfg = Debug|x86
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|x86.Build.0 = Debug|x86
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Debug|x86.Deploy.0 = Debug|x86
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|Any CPU.ActiveCfg = Release|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|Any CPU.Build.0 = Release|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|ARM64.ActiveCfg = Release|ARM64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|ARM64.Build.0 = Release|ARM64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|ARM64.Deploy.0 = Release|ARM64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|x64.ActiveCfg = Release|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|x64.Build.0 = Release|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|x64.Deploy.0 = Release|x64
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|x86.ActiveCfg = Release|x86
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|x86.Build.0 = Release|x86
+		{F4633F66-8EFD-49EA-A29C-637DD583C420}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2105FBDB-0B5B-4376-A80C-EF728F4A5F9B}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,366 @@
+﻿[
+  {
+    "Id": 1,
+    "Title": "Tabar Series 1",
+    "Server": "https://dl1.tabar.sbs/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 2,
+    "Title": "Tabar Series 2",
+    "Server": "https://dl2.tabar.sbs/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 3,
+    "Title": "Tabar Series 3",
+    "Server": "https://dl3.tabar.sbs/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 4,
+    "Title": "Tabar Series 4",
+    "Server": "https://dl4.tabar.sbs/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 5,
+    "Title": "Freevipdl Series 4",
+    "Server": "http://dl4.freevipdl.xyz/dl/English/Series/",
+    "IsActive": false,
+    "ServerType": 2
+  },
+  {
+    "Id": 6,
+    "Title": "Tabar Anime 2",
+    "Server": "https://dl2.tabar.sbs/English/Anime/",
+    "IsActive": false,
+    "ServerType": 0
+  },
+  {
+    "Id": 7,
+    "Title": "Tabar Movie 1",
+    "Server": "https://dl1.tabar.sbs/English/Movies/",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 8,
+    "Title": "Tabar Movie 2",
+    "Server": "https://dl2.tabar.sbs/English/Movies/",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 9,
+    "Title": "Tabar Movie 3",
+    "Server": "https://dl3.tabar.sbs/English/Movies/",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 10,
+    "Title": "Tabar Movie 4",
+    "Server": "https://dl4.tabar.sbs/English/Movies/",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 11,
+    "Title": "Freevipdl Movie 4",
+    "Server": "http://dl4.freevipdl.xyz/dl/English/Movie/",
+    "IsActive": false,
+    "ServerType": 1
+  },
+  {
+    "Id": 12,
+    "Title": "Tabar Anime 1",
+    "Server": "https://dl1.tabar.sbs/English/Anime/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 13,
+    "Title": "Freevipdl Series 3",
+    "Server": "http://dl3.freevipdl.xyz/dl/English/Series/",
+    "IsActive": false,
+    "ServerType": 2
+  },
+  {
+    "Id": 14,
+    "Title": "Freevipdl Series 2",
+    "Server": "http://dl2.freevipdl.xyz/dl/English/Series/",
+    "IsActive": false,
+    "ServerType": 2
+  },
+  {
+    "Id": 15,
+    "Title": "Freevipdl Series 1",
+    "Server": "http://dl1.freevipdl.xyz/dl/English/Series/",
+    "IsActive": false,
+    "ServerType": 2
+  },
+  {
+    "Id": 16,
+    "Title": "Freevipdl Movie 3",
+    "Server": "http://dl3.freevipdl.xyz/dl/English/Movie/",
+    "IsActive": false,
+    "ServerType": 1
+  },
+  {
+    "Id": 17,
+    "Title": "Freevipdl Movie 2",
+    "Server": "http://dl2.freevipdl.xyz/dl/English/Movie/",
+    "IsActive": false,
+    "ServerType": 1
+  },
+  {
+    "Id": 18,
+    "Title": "Freevipdl Movie 1",
+    "Server": "http://dl1.freevipdl.xyz/dl/English/Movie/",
+    "IsActive": false,
+    "ServerType": 1
+  },
+  {
+    "Id": 19,
+    "Title": "Tabar Series 5",
+    "Server": "https://dl5.tabar.sbs/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 20,
+    "Title": "Tabar Movie 5",
+    "Server": "https://dl5.tabar.sbs/English/Movies/",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 21,
+    "Title": "Tabar Anime 3",
+    "Server": "https://dl3.tabar.sbs/English/Anime/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 22,
+    "Title": "Tabar Anime 4",
+    "Server": "https://dl4.tabar.sbs/English/Anime/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 23,
+    "Title": "Tabar Anime 5",
+    "Server": "https://dl5.tabar.sbs/English/Anime/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 24,
+    "Title": "DonyayeSerial Series 2",
+    "Server": "https://dls2.top-movies2filmha.click/DonyayeSerial/series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 26,
+    "Title": "DonyayeSerial Series 5",
+    "Server": "https://dls5.top-movies2filmha.click/DonyayeSerial/series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 27,
+    "Title": "DonyayeSerial Series 6",
+    "Server": "https://dls6.top-movies2filmha.click/DonyayeSerial/series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 32,
+    "Title": "Anime AIO",
+    "Server": "https://dl4.rostam.top/anime/2022/Fall/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 33,
+    "Title": "Anime AIO Fall",
+    "Server": "https://dl4.rostam.top/anime/1999/Fall",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 34,
+    "Title": "AceMovies Series 3",
+    "Server": "http://dl3.dl1acemovies.xyz/dl/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 35,
+    "Title": "AceMovies Movie 3",
+    "Server": "http://dl3.dl1acemovies.xyz/dl/English/Movie",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 36,
+    "Title": "AceMovies Anime 3",
+    "Server": "http://dl3.dl1acemovies.xyz/dl/English/Anime/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 37,
+    "Title": "AceMovies Series 4",
+    "Server": "http://dl4.dl1acemovies.xyz/dl/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 38,
+    "Title": "AceMovies Movie 4",
+    "Server": "http://dl4.dl1acemovies.xyz/dl/English/Movie",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 39,
+    "Title": "AceMovies Anime 4",
+    "Server": "http://dl4.dl1acemovies.xyz/dl/English/Anime",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 40,
+    "Title": "Filmbbin Series",
+    "Server": "https://dl.filmbbin2.com/Serise/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 41,
+    "Title": "Filmbbin Movie",
+    "Server": "https://dl.filmbbin2.com/Movie/",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 42,
+    "Title": "Filmbbin Movie (Animation)",
+    "Server": "https://dl.filmbbin2.com/Animation/",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 43,
+    "Title": "FBServer Series 2",
+    "Server": "https://dl2.fbserver.site/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 44,
+    "Title": "FBServer Series 3",
+    "Server": "https://dl3.fbserver.site/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 45,
+    "Title": "FBServer Series 4",
+    "Server": "https://dl4.fbserver.site/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 46,
+    "Title": "AnimeSP Completed",
+    "Server": "https://dl.animesp.xyz/Completed/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 47,
+    "Title": "AnimeSP Ongoing",
+    "Server": "https://dl.animesp.xyz/Ongoing/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 48,
+    "Title": "AnimeSP Spring",
+    "Server": "https://dl.animesp.xyz/Spring%202022/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 49,
+    "Title": "AnimeSP Summer",
+    "Server": "https://dl.animesp.xyz/Summer%202022/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 50,
+    "Title": "AnimeSP Winter",
+    "Server": "https://dl.animesp.xyz/Winter%202022/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 53,
+    "Title": "Tabar Anime 0",
+    "Server": "https://dl.tabar.sbs/English/Anime/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 54,
+    "Title": "Tabar Movie 0",
+    "Server": "https://dl.tabar.sbs/English/Movies/",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 55,
+    "Title": "Tabar Series 0",
+    "Server": "https://dl.tabar.sbs/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 56,
+    "Title": "AceMovies Anime 5",
+    "Server": "http://dl5.dl1acemovies.xyz/dl/English/Anime/",
+    "IsActive": true,
+    "ServerType": 0
+  },
+  {
+    "Id": 57,
+    "Title": "AceMovies Movie 5",
+    "Server": "http://dl5.dl1acemovies.xyz/dl/English/Movie",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 58,
+    "Title": "AceMovies Series 5",
+    "Server": "http://dl5.dl1acemovies.xyz/dl/English/Series/",
+    "IsActive": true,
+    "ServerType": 2
+  },
+  {
+    "Id": 59,
+    "Title": "Tabar Series 02",
+    "Server": "https://dl.tabar.sbs/English/Series2",
+    "IsActive": true,
+    "ServerType": 2
+  }
+]

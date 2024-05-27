@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserControl x:Class="MeowFlix.Views.ItemUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="using:Microsoft.Xaml.Interactivity"
+             xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+             xmlns:local="using:MeowFlix.Common"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:MeowFlix.Views"
+             xmlns:wuc="using:WinUICommunity"
+             x:DefaultBindMode="OneWay"
+             mc:Ignorable="d">
+
+
+    <Grid Width="200" PointerEntered="HandleMouseEnter" PointerExited="HandleMouseExit" >
+        <Grid>
+            <Image Source="{x:Bind Poster}" 
+                   Stretch="UniformToFill" 
+                   CacheMode="BitmapCache"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+            <Border>
+                <TextBlock Text="{x:Bind Rating}" 
+                           FontStyle="Italic" 
+                           FontFamily="Arial" 
+                           FontSize="18" 
+                           FontWeight="Bold"
+                           TextWrapping="WrapWholeWords" 
+                           HorizontalAlignment="Right" 
+                           Foreground="#ec7615" 
+                           VerticalAlignment="Bottom" 
+                           Margin="0,0,4,50"/>
+            </Border>
+            <StackPanel Orientation="Vertical" 
+                        Height="48" 
+                        VerticalAlignment="Bottom" 
+                        Padding="5,4,5,1" 
+                        Background="{ThemeResource SolidBackgroundFillColorBaseBrush}" 
+                        Opacity=".95">
+                <TextBlock Text="{x:Bind Title}" 
+                           HorizontalAlignment="Center" 
+                           FontSize="14" 
+                           FontWeight="Bold" 
+                           Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="{x:Bind Year}" 
+                               FontSize="14" 
+                               FontWeight="Medium" 
+                               Style="{ThemeResource CaptionTextBlockStyle}" 
+                               Foreground="{ThemeResource AccentTextFillColorDisabledBrush}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Border x:Name="overlay" 
+                Background="{ThemeResource SolidBackgroundFillColorBaseBrush}" 
+                Opacity="0.9" 
+                Tapped="GoToDetails_Tapped"
+                Tag="{x:Bind}"
+                Visibility="Collapsed">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- 上方按钮区域 -->
+                <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+                    <!-- 中心按钮 -->
+                    <Button Name="PlayButton" 
+                            HorizontalAlignment="Center" 
+                            Margin="0,0,0,48" 
+                            BorderThickness="0"
+                            Command="{x:Bind ViewModel.PlayCommand}"
+                            CommandParameter="{x:Bind BaseMedia}"
+                            Background="Transparent">
+                        <!-- 中心按钮的内容 -->
+                        <FontIcon FontSize="32" Glyph="&#xF5B0;" />
+                    </Button>
+                </Grid>
+
+                <!-- 下方按钮区域 -->
+                <Border>
+                    <Grid Grid.Row="1" 
+                          Height="48" 
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Bottom" 
+                          Background="{ThemeResource SolidBackgroundFillColorBaseBrush}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Name="Details" 
+                                Grid.Column="0" 
+                                HorizontalAlignment="Stretch" 
+                                BorderThickness="0" 
+                                Background="Transparent">
+                            <FontIcon  Glyph="&#xE890;" />
+                        </Button>
+
+                        <Button Name="Edit" 
+                                Grid.Column="1" 
+                                HorizontalAlignment="Stretch" 
+                                BorderThickness="0" 
+                                Background="Transparent">
+                            <!-- 另一个按钮的内容 -->
+                            <FontIcon Glyph="&#xE932;" />
+                        </Button>
+
+                        <Button Name="Like" 
+                                Grid.Column="2" 
+                                HorizontalAlignment="Stretch" 
+                                BorderThickness="0" 
+                                Background="Transparent">
+                            <!-- 第三个按钮的内容 -->
+                            <FontIcon Glyph="&#xEB51;" />
+                        </Button>
+                    </Grid>
+                </Border>
+
+                <!-- 右上角按钮 -->
+                <Button Name="TopRightButton" 
+                        Grid.Row="0" 
+                        Margin="4" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top" 
+                        BorderThickness="0" 
+                        Background="Transparent">
+                    <!-- 右上角按钮的内容 -->
+                    <FontIcon Glyph="&#xE712;" />
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="打开所在文件夹" 
+                                            Command="{x:Bind ViewModel.OpenFolderCommand}" 
+                                            CommandParameter="{x:Bind BaseMedia}">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xED25;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Text="删除" 
+                                            Command="{x:Bind ViewModel.RemoveFileCommand}" CommandParameter="{x:Bind BaseMedia}">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE74D;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

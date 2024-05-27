@@ -1,0 +1,66 @@
+﻿{
+  "Groups": [
+    {
+      "UniqueId": "MeowFlix",
+      "Title": "喵影",
+      "ImagePath": "ms-appx:///Assets/icon.png",
+      "ImageIconPath": "ms-appx:///Assets/icon.png",
+      "IsSpecialSection": false,
+      "HideGroup": false,
+      "ShowItemsWithoutGroup": true,
+      "IsExpanded": false,
+      "Items": [
+        {
+          "UniqueId": "MeowFlix.Views.HomeLandingPage",
+          "Title": "主页",
+          "Subtitle": "结合了“Meow”（喵）的可爱感和“Flix”（来自“Flicks”，意指影片）的影视元素，同时保留了“喵影”原有名字的趣味和亲和力",
+          "ImagePath": "ms-appx:///Assets/Fluent/home.png",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/home.png",
+          "HideItem": true
+        },
+        {
+          "UniqueId": "MeowFlix.Views.MediaPage",
+          "Title": "电影",
+          "Parameter": "Movies",
+          "Subtitle": "刮削管理本地珍藏的电影",
+          "ImagePath": "ms-appx:///Assets/Fluent/movie.png",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/movie.png",
+          "IsUpdated": true
+        },
+        {
+          "UniqueId": "MeowFlix.Views.MediaPage",
+          "Title": "剧集",
+          "Parameter": "Series",
+          "Subtitle": "刮削管理本地收藏的剧集",
+          "ImagePath": "ms-appx:///Assets/Fluent/media.png",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/media.png",
+          "IsUpdated": true
+        },
+        {
+          "UniqueId": "MeowFlix.Views.MusicPage",
+          "Title": "音乐",
+          "Subtitle": "珍藏音乐",
+          "ImagePath": "ms-appx:///Assets/Fluent/sound.png",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/sound.png",
+          "IsUpdated": true
+        },
+        {
+          "UniqueId": "MeowFlix.Views.BookPage",
+          "Title": "图书",
+          "Subtitle": "珍藏图书",
+          "ImagePath": "ms-appx:///Assets/Fluent/book.png",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/book.png",
+          "IsUpdated": true
+        },
+        {
+          "UniqueId": "MeowFlix.Views.ServerPage",
+          "Title": "媒体库",
+          "Subtitle": "管理影视媒体库",
+          "ImagePath": "ms-appx:///Assets/Fluent/media_storage.png",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/media_storage.png",
+          "IsUpdated": true
+        }
+      ]
+    }
+  ]
+}

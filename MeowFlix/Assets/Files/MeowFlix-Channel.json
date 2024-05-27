@@ -1,0 +1,58 @@
+﻿[
+  {
+    "Id": 1,
+    "Title": "全部",
+    "FilePath": "\uE71D",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 2,
+    "Title": "最爱",
+    "FilePath": "\uEB52",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 3,
+    "Title": "动漫",
+    "FilePath": "\uED53",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 4,
+    "Title": "纪录",
+    "FilePath": "\uE714",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 5,
+    "Title": "系列",
+    "FilePath": "\uE95A",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 6,
+    "Title": "综艺",
+    "FilePath": "\uEA69",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 7,
+    "Title": "高分",
+    "FilePath": "\uE8DF",
+    "IsActive": true,
+    "ServerType": 1
+  },
+  {
+    "Id": 8,
+    "Title": "私密",
+    "FilePath": "\uEE65",
+    "IsActive": true,
+    "ServerType": 1
+  }
+]
