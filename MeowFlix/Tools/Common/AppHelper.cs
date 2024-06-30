@@ -306,12 +306,11 @@ public static partial class AppHelper
         {
             return;
         }
-        
-        filePath = "http://192.168.31.10:5244/d/cadd%E7%94%B5%E5%BD%B1/The.Marvels.2023.2160p.BluRay.x265.10bit.Atmos.TrueHD7.1-WiKi/The.Marvels.2023.2160p.BluRay.x265.10bit.Atmos.TrueHD7.1-WiKi.mkv";
-        
+                
         if (!filePath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) && !filePath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
         {
             Process.Start("explorer.exe", filePath);
+            return; 
         }
         
         var mediaPlayerDetector = new MediaPlayerDetector();

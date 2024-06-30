@@ -248,7 +248,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
         var dialog = sender as ServerContentDialog;
 
         var baseServer =
-            new BaseServerTable(dialog.ServerTitle.Trim(), dialog.ServerUrl.Trim(), dialog.ServerActivation);
+            new BaseServerTable(dialog.ServerTitle.Trim(), FloderPath, dialog.ServerActivation);
 
         if (SegmentedSelectedIndex == 0)
         {

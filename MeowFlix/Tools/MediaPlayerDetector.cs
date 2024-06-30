@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using Microsoft.Win32;
 
 namespace MeowFlix.Tools;
@@ -39,49 +40,49 @@ public class MediaPlayerDetector
         using (RegistryKey potPlayerKey = Registry.CurrentUser.OpenSubKey(potPlayerRegistryPath))
         {
             if (vlcKey != null)
-            {
+    {
                 return InstalledPlayer.VLC;
-            }
-            else if (potPlayerKey != null)
-            {
-                return InstalledPlayer.PotPlayer;
-            }
         }
+            else if (potPlayerKey != null)
+        {
+                return InstalledPlayer.PotPlayer;
+        }
+    }
 
         // 检查系统盘下的标准安装路径
         string systemDrive = Environment.GetFolderPath(Environment.SpecialFolder.System).Substring(0, 2); // e.g., "C:"
         string dDrive = "D:";
-        
+
         string[] systemStandardPaths =
-        {
-            Path.Combine(systemDrive, "Program Files", "VideoLAN", "VLC", "vlc.exe"),
+                {
+            Path.Combine(systemDrive, "vlc.exe"),
             Path.Combine(systemDrive, "Program Files (x86)", "VideoLAN", "VLC", "vlc.exe"),
             Path.Combine(systemDrive, "Program Files", "DAUM", "PotPlayer", "PotPlayerMini64.exe"),
-            Path.Combine(systemDrive, "Program Files (x86)", "DAUM", "PotPlayer", "PotPlayerMini64.exe")
+            Path.Combine(systemDrive, "PotPlayerMini64.exe")
         };
-        
+
         string[] dStandardPaths =
-        {
-            Path.Combine(dDrive, "Program Files", "VideoLAN", "VLC", "vlc.exe"),
+                    {
+            Path.Combine(dDrive, "vlc.exe"),
             Path.Combine(systemDrive, "Program Files (x86)", "VideoLAN", "VLC", "vlc.exe"),
-            Path.Combine(dDrive, "Program Files", "DAUM", "PotPlayer", "PotPlayerMini64.exe"),
+            Path.Combine(dDrive, "PotPlayerMini64.exe"),
             Path.Combine(systemDrive, "Program Files (x86)", "DAUM", "PotPlayer", "PotPlayerMini64.exe")
         };
         
         var fileCheckTasks = new List<Task<bool>>();
         foreach (string path in systemStandardPaths.Concat(dStandardPaths))
-        {
+                        {
             fileCheckTasks.Add(Task.Run(() => File.Exists(path)));
-        }
+                    }
 
         await Task.WhenAll(fileCheckTasks);
 
         for (int i = 0; i < fileCheckTasks.Count; i++)
-        {
+                    {
             if (fileCheckTasks[i].Result)
-            {
+                        {
                 return i == 0 ? InstalledPlayer.VLC : InstalledPlayer.PotPlayer;
-            }
+        }
         }
 
         return InstalledPlayer.None;
