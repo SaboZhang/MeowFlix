@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 
 using MeowFlix.Database.Tables;
 using MeowFlix.Tools;
+using MeowFlix.Views.ContentDialogs;
 
 namespace MeowFlix.Common;
 public static partial class AppHelper
@@ -300,23 +301,13 @@ public static partial class AppHelper
         Process.Start(playerPath, filePath);
     }
 
-    public static async void LaunchPlayer(string filePath)
+    public static void LaunchPlayer(string filePath, InstalledPlayer player)
     {
         if (string.IsNullOrEmpty(filePath))
         {
             return;
         }
-                
-        if (!filePath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) && !filePath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-        {
-            Process.Start("explorer.exe", filePath);
-            return; 
-        }
-        
-        var mediaPlayerDetector = new MediaPlayerDetector();
-        var thirtyDays = new TimeSpan(30, 0, 0,0);
-        var mediaPlayer = await mediaPlayerDetector.GetInstalledStandardMediaPlayerAsync(thirtyDays);
-        switch (mediaPlayer)
+        switch (player)
         {
             case InstalledPlayer.PotPlayer:
                 filePath = "potplayer://" + filePath;
@@ -326,13 +317,26 @@ public static partial class AppHelper
                 filePath = "vlc://" + filePath;
                 Process.Start("explorer.exe", filePath);
                 break;
-            case InstalledPlayer.None:
-                Growl.Error("未找到支持的播放器，仅支持PotPlayer、VLC 直接播放WebDAV中的视频，其他播放器请挂载为本地磁盘播放");
+            case InstalledPlayer.MPV:
+                filePath = "mpv://" + filePath;
+                Process.Start("explorer.exe", filePath);
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
-        
+    }
+
+    public static async Task<bool> LaunchPlayer(string filePath)
+    {
+        if (string.IsNullOrEmpty(filePath))
+        {
+            return false;
+        }
+                
+        if (!filePath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) && !filePath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            await Task.Run(() => Process.Start("explorer.exe", filePath));
+            return true; 
+        }
+        return false;
 
     }
 

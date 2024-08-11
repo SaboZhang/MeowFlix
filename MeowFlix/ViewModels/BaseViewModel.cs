@@ -7,6 +7,7 @@ using System.Windows;
 using CommunityToolkit.WinUI.UI;
 
 using MeowFlix.Database.Tables;
+using MeowFlix.Tools;
 using MeowFlix.Views.ContentDialogs;
 
 using Windows.ApplicationModel.DataTransfer;
@@ -38,6 +39,13 @@ public partial class BaseViewModel : ObservableRecipient
 
     public string headerText = string.Empty;
     public string descriptionText = string.Empty;
+
+    [ObservableProperty]
+    public string videoPath;
+
+    public string videoUrl { get; set;}
+
+
 
     #region MenuFlyoutItems
     [RelayCommand]
@@ -100,7 +108,7 @@ public partial class BaseViewModel : ObservableRecipient
     #endregion
 
     [RelayCommand]
-    protected virtual void OnPlay(object baseMedia)
+    protected virtual async Task OnPlay(object baseMedia)
     {
         var playerPath = GetPlayerPath();
         var media = baseMedia as BaseMediaTable;
@@ -115,7 +123,17 @@ public partial class BaseViewModel : ObservableRecipient
         }
         else if (!string.IsNullOrEmpty(filePath))
         {
-            LaunchPlayer(filePath);
+            var type =await LaunchPlayer(filePath);
+            if (!type)
+            {
+                ToastWithAvatar.Instance.SendToast();
+                var dialog = new SelectPlayerDialog
+                {
+                    VideoPath = filePath,
+                    RequestedTheme = ElementTheme.Default
+                };
+                await dialog.ShowAsync();
+            }
         }
     }
 
@@ -187,6 +205,25 @@ public partial class BaseViewModel : ObservableRecipient
 
     }
 
+    [RelayCommand]
+    public virtual void OnSelectPlayer(object sender)
+    {
+        var param = sender as Button;
+
+        switch (param.CommandParameter)
+        {
+            case "PotPlayer":
+                LaunchPlayer(VideoPath, InstalledPlayer.PotPlayer);
+                break;
+            case "vlc":
+                LaunchPlayer(VideoPath,InstalledPlayer.VLC);
+                break;
+            case "mpv":
+                LaunchPlayer(VideoPath,InstalledPlayer.MPV);
+                break;
+        }
+    }
+
     public (string Header, string Description) GetHeaderAndDescription(object sender)
     {
         var item = sender as ItemUserControl;
@@ -196,6 +233,6 @@ public partial class BaseViewModel : ObservableRecipient
 
         return (Header: title, Description: server);
     }
- 
+
 
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="MeowFlix.Views.ContentDialogs.SelectPlayerDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MeowFlix.Views.ContentDialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="请选择您拥有的播放器"
+    CloseButtonText="取消"
+    CornerRadius="{ThemeResource OverlayCornerRadius}">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button AutomationProperties.Name="PotPlayer" Height="48" Width="48" Margin="5" Click="PlayerButton_Click" CommandParameter="PotPlayer">
+                <Image Source="/Assets/Plyaer/PotPlayer.png" AutomationProperties.Name="PotPlayer"/>
+            </Button>
+            <Button AutomationProperties.Name="vlc" Height="48" Width="48" Margin="5" Click="PlayerButton_Click" CommandParameter="vlc">
+                <Image Source="/Assets/Plyaer/vlc.png" AutomationProperties.Name="vlc"/>
+            </Button>
+            <Button AutomationProperties.Name="mpv" Height="48" Width="48" Margin="5" Click="PlayerButton_Click" CommandParameter="mpv">
+                <Image Source="/Assets/Plyaer/mpv.png" AutomationProperties.Name="mpv"/>
+            </Button>
+            <TextBlock Visibility="Collapsed" Text="{x:Bind VideoPath}"/>
+        </StackPanel>
+    </Grid>
+    
+</ContentDialog>

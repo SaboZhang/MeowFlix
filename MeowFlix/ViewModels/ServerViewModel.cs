@@ -5,8 +5,6 @@ using Newtonsoft.Json;
 using MeowFlix.Database;
 using MeowFlix.Database.Tables;
 using MeowFlix.Views.ContentDialogs;
-using Microsoft.UI.Xaml.Controls;
-using System.Text.RegularExpressions;
 using MeowFlix.Naming;
 using MeowFlix.Tools;
 
