@@ -30,9 +30,9 @@ MeowFlix，将“Meow”（喵）的可爱与“Flix”（源自“Flicks”，�
                                     Spacing="5">
                             <TextBlock Text="相关链接" />
                             <HyperlinkButton Content="源代码"
-                                             NavigateUri="https://github.com/WinUICommunity/MeowFlix" />
+                                             NavigateUri="https://github.com/SaboZhang/MeowFlix" />
                             <HyperlinkButton Content="发布说明"
-                                             NavigateUri="https://github.com/WinUICommunity/MeowFlix/releases" />
+                                             NavigateUri="https://github.com/SaboZhang/MeowFlix/releases" />
                         </StackPanel>
                     </wuc:SettingsCard>
                 </wuc:SettingsExpander.Items>

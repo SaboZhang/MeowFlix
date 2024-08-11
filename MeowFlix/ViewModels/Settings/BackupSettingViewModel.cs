@@ -26,7 +26,7 @@ public partial class BackupSettingViewModel : ObservableObject
 
             if (!this.isMediaServer)
             {
-                fileName = $"MeowFlix-SubtitleServers-{DateTime.Now:yyyy-MM-dd HH-mm-ss}";
+                fileName = $"MeowFlix-Channels-{DateTime.Now:yyyy-MM-dd HH-mm-ss}";
             }
 
             var fileTypeChoices = new Dictionary<string, IList<string>>
@@ -42,7 +42,7 @@ public partial class BackupSettingViewModel : ObservableObject
 
                 if (!this.isMediaServer)
                 {
-                    servers = await db.SubtitleServers.ToListAsync();
+                    servers = await db.Chanels.ToListAsync();
                 }
 
                 var json = JsonConvert.SerializeObject(servers, Formatting.Indented);
@@ -90,7 +90,7 @@ public partial class BackupSettingViewModel : ObservableObject
                     {
                         foreach (var item in content)
                         {
-                            await db.SubtitleServers.AddAsync(new SubtitleServerTable(item.Title, item.FilePath, item.IsActive));
+                            await db.Chanels.AddAsync(new ChannelTable(item.Title, item.FilePath, item.IsActive));
                         }
                     }
 

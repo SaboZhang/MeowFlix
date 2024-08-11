@@ -63,18 +63,23 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                 try
                 {
                     using var db = new AppDbContext();
-                    if (!db.SubtitleServers.Any())
+                    if (!db.Chanels.Any())
                     {
-                        using var streamReader = File.OpenText(await PathHelper.GetFilePath(Constants.DEFAULT_SUBTITLE_SERVER_PATH));
+                        using var streamReader = File.OpenText(await PathHelper.GetFilePath(Constants.DEFAULT_CHANNEL));
                         var json = await streamReader.ReadToEndAsync();
-                        var content = JsonConvert.DeserializeObject<List<SubtitleServerTable>>(json);
+                        var content = JsonConvert.DeserializeObject<List<ChannelTable>>(json);
                         if (content is not null)
                         {
-                            await db.SubtitleServers.AddRangeAsync(content);
+                            await db.Chanels.AddRangeAsync(content);
                         }
                         await db.SaveChangesAsync();
                     }
-                    var segments = db.SubtitleServers.Where(x => x.IsActive)
+                    if (!db.Auth.Any(u => u.Username == Constants.DEFAULT_USERNAME))
+                    {
+                        await db.Auth.AddAsync(new AuthTable { Username = Constants.DEFAULT_USERNAME, Password = "", IsLocal = true});
+                        await db.SaveChangesAsync();
+                    }
+                    var segments = db.Chanels.Where(x => x.IsActive)
                         .Select(x => new SegmentedItem { Content = x.Title, Icon = new FontIcon { Glyph = x.FilePath } });
 
                     SegmentedItems = new(segments);
@@ -273,6 +278,11 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
             {
                 var db = new AppDbContext();
                 var passwordHash = await db.Auth.Where(p => p.Username == Constants.DEFAULT_USERNAME).Select(p => p.Password).FirstOrDefaultAsync();
+                if (string.IsNullOrEmpty(passwordHash))
+                {
+                    Growl.Error("请先设置隐私密码");
+                    return;
+                }
                 var pass = BCrypt.Net.BCrypt.Verify(dialog.Password, passwordHash);
                 if (!pass)
                 {
@@ -291,7 +301,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                         break;
                 }
                 
-                if (media != null && media.Count != 0)
+                /*if (media != null && media.Count != 0)
                 {
                     DataList = [];
                     DataListACV = new AdvancedCollectionView(DataList, true);
@@ -302,7 +312,16 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                     }
 
                     DataListACV.SortDescriptions.Add(new SortDescription("Title", SortDirection.Ascending));
+                }*/
+                DataList = [];
+                DataListACV = new AdvancedCollectionView(DataList, true);
+
+                using (DataListACV.DeferRefresh())
+                {
+                    DataList.AddRange(media);
                 }
+
+                DataListACV.SortDescriptions.Add(new SortDescription("Title", SortDirection.Ascending));
                 IsActive = false;
                 StatusSeverity = InfoBarSeverity.Success;
                 StatusTitle = $"共 ({DataList?.Count}) 个筛选结果";

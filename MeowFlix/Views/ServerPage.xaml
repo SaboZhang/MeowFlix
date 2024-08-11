@@ -106,12 +106,14 @@
                                         Width="40"
                                         Height="36"
                                         Click="BtnSeach_Click"
+                                        ToolTipService.ToolTip="索引"
                                         Content="{wuc:BitmapIcon Source=Assets/Fluent/seach.png}"
                                         DataContext="{x:Bind}"
                                         Style="{StaticResource SubtleButtonStyle}" />
                                 <Button x:Name="BtnUpdate"
                                         Width="40"
                                         Height="36"
+                                        ToolTipService.ToolTip="编辑"
                                         Click="BtnUpdate_Click"
                                         Content="{wuc:BitmapIcon Source=Assets/Fluent/edit.png}"
                                         DataContext="{x:Bind}"
@@ -119,6 +121,7 @@
                                 <Button x:Name="BtnDelete"
                                         Width="40"
                                         Height="36"
+                                        ToolTipService.ToolTip="删除"
                                         Click="BtnDelete_Click"
                                         Content="{wuc:BitmapIcon Source=Assets/Fluent/trash.png}"
                                         DataContext="{x:Bind}"
@@ -154,8 +157,6 @@
             </i:Interaction.Behaviors>
         </views:NoItemUserControl>
 
-        <ProgressRing Grid.Row="2"
-                      IsActive="{x:Bind ViewModel.IsActive}" />
         <InfoBar x:Name="Status"
                  Title="{x:Bind ViewModel.InfoBarTitle, Mode=OneWay}"
                  Grid.Row="3"
@@ -163,5 +164,8 @@
                  IsClosable="True"
                  IsOpen="{x:Bind ViewModel.InfoBarIsOpen, Mode=OneWay}"
                  Severity="{x:Bind ViewModel.InfoBarSeverity, Mode=OneWay}" />
+        <ProgressRing Grid.Row="2"
+              IsActive="{x:Bind ViewModel.IsActive}" />
     </Grid>
+    
 </Page>

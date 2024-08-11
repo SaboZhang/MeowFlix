@@ -72,7 +72,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
                     }
                     else
                     {
-                        ServerList = new(await db.SubtitleServers.ToListAsync());
+                        ServerList = new(await db.Chanels.ToListAsync());
                     }
 
                     ServerListACV = new AdvancedCollectionView(ServerList, true);
@@ -174,6 +174,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
     
     private async void OnAddServerPrimaryButton(ContentDialog sender, ContentDialogButtonClickEventArgs args)
     {
+        IsActive = true;
         try
         {
             if (sender is null) return;
@@ -194,10 +195,12 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
             await AddToDatabase(db, sender, args);
 
             UpdateUiAfterSuccess();
+            IsActive = false;
         }
         catch (Exception ex)
         {
             HandleException(ex);
+            IsActive = false;
         }
     }
 
@@ -264,7 +267,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
         }
         else
         {
-            await db.SubtitleServers.AddAsync(new SubtitleServerTable(baseServer.Title, baseServer.FilePath,
+            await db.Chanels.AddAsync(new ChannelTable(baseServer.Title, baseServer.FilePath,
                 baseServer.IsActive));
         }
 
@@ -273,11 +276,12 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
 
     private async Task AddDefaultAuthIfNotExists(AppDbContext db, ServerContentDialog dialog)
     {
-        var exists = db.Auth.Any(p => p.Username == Constants.DEFAULT_USERNAME);
-        if (!exists)
+        var user = db.Auth.FirstOrDefault(p => p.Username == Constants.DEFAULT_USERNAME);
+        if (user != null && string.IsNullOrEmpty(user.Password))
         {
             var hashPassword = BCrypt.Net.BCrypt.HashPassword(dialog.Password.Trim());
-            await db.Auth.AddAsync(new AuthTable(Constants.DEFAULT_USERNAME, hashPassword, true));
+            user.Password = hashPassword;
+            await db.SaveChangesAsync();
         }
     }
 
@@ -364,7 +368,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
                     }
                     else
                     {
-                        var oldSubtitleServer = await db.SubtitleServers
+                        var oldSubtitleServer = await db.Chanels
                             .Where(x => x.Title == server.Title && x.FilePath == server.FilePath).FirstOrDefaultAsync();
                         oldSubtitleServer.Title = dialog.ServerTitle;
                         oldSubtitleServer.FilePath = dialog.ServerUrl;
@@ -414,13 +418,13 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
                 }
                 else
                 {
-                    var delete = await db.SubtitleServers.Where(x =>
+                    var delete = await db.Chanels.Where(x =>
                             x.Title == server.Title && x.FilePath == server.FilePath &&
                             x.ServerType == ServerType.Subtitle)
                         .FirstOrDefaultAsync();
                     if (delete != null)
                     {
-                        db.SubtitleServers.Remove(delete);
+                        db.Chanels.Remove(delete);
                     }
                 }
 
@@ -456,7 +460,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
 
                 if (SegmentedSelectedIndex != 0)
                 {
-                    filePath = Constants.DEFAULT_SUBTITLE_SERVER_PATH;
+                    filePath = Constants.DEFAULT_CHANNEL;
                 }
 
                 using var streamReader = File.OpenText(await PathHelper.GetFilePath(filePath));
@@ -473,10 +477,10 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
                 }
                 else
                 {
-                    var content = JsonConvert.DeserializeObject<List<SubtitleServerTable>>(json);
+                    var content = JsonConvert.DeserializeObject<List<ChannelTable>>(json);
                     if (content is not null)
                     {
-                        await db.SubtitleServers.AddRangeAsync(content);
+                        await db.Chanels.AddRangeAsync(content);
                     }
                 }
 

@@ -90,7 +90,7 @@
                           OnContent="私密" />
         </StackPanel>
         <PasswordBox Width="360"
-                     Header="隐私密码"
+                     Header="隐私密码(仅需首次输入)"
                      PlaceholderText="请输入隐私密码"
                      Password="{x:Bind Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Visibility="{x:Bind ViewModel.IsPrivate, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}}"/>

@@ -70,7 +70,7 @@ public class AppDbContext : DbContext
     }
     public DbSet<StorageTable> Storages { get; set; }
     public DbSet<MediaServerTable> MediaServers { get; set; }
-    public DbSet<SubtitleServerTable> SubtitleServers { get; set; }
+    public DbSet<ChannelTable> Chanels { get; set; }
     public DbSet<AnimeTable> Animes { get; set; }
     public DbSet<MovieTable> Movies { get; set; }
     public DbSet<SeriesTable> Series { get; set; }
