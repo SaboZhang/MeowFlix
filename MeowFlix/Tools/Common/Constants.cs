@@ -6,7 +6,7 @@ public static class Constants
     public static readonly string LogDirectoryPath = Path.Combine(RootDirectoryPath, "Log");
     public static readonly string LogFilePath = Path.Combine(LogDirectoryPath, "Log.txt");
     public static readonly string AppConfigPath = Path.Combine(RootDirectoryPath, "AppConfig.json");
-    public static readonly string DEFAULT_CHANNEL= "Assets/Files/MeowFlix-Channel.json";
+    public static readonly string DEFAULT_CHANNEL = "Assets/Files/MeowFlix-Channel.json";
     public static readonly string DEFAULT_MEDIA_SERVER_PATH = "Assets/Files/MeowFlix-MediaServers.json";
     public static readonly string DEFAULT_USERNAME = "localhost";
     public static readonly string ENCRYPT_CHANNEL = "私密";

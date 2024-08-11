@@ -12,7 +12,7 @@ public sealed partial class NoItemUserControl : UserControl
 
     public int Count
     {
-        get => (int) GetValue(CountProperty);
+        get => (int)GetValue(CountProperty);
         set => SetValue(CountProperty, value);
     }
 

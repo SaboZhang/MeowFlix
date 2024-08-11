@@ -17,7 +17,7 @@ public sealed partial class SubtitleSettingPage : Page
         {
             if (Settings.SubtitleLanguagesCollection.Any(x => x.Equals(item.Content)))
             {
-               item.IsSelected = true;
+                item.IsSelected = true;
             }
             else
             {
@@ -43,7 +43,7 @@ public sealed partial class SubtitleSettingPage : Page
         {
             var selectedItem = e.AddedItems[0] as TokenItem;
             var itemContent = selectedItem.Content.ToString();
-            if (!Settings.SubtitleLanguagesCollection.Any(x=>x.Equals(itemContent)))
+            if (!Settings.SubtitleLanguagesCollection.Any(x => x.Equals(itemContent)))
             {
                 Settings.SubtitleLanguagesCollection.Add(itemContent);
             }

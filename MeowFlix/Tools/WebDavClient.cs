@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using WebDAVClient;
 using WebDAVClient.Model;
 
@@ -23,7 +18,7 @@ public class WebDavClient
         _client.Server = serverUrl;
         _client.BasePath = basePath;
     }
-    
+
     private static (string serverUrl, string basePath) ExtractServerUrlAndBasePath(string inputUrl)
     {
         if (string.IsNullOrEmpty(inputUrl))
@@ -46,7 +41,7 @@ public class WebDavClient
 
             // 如果basePath为空或仅为斜杠（""或"/"），则设为"/"
             basePath = string.IsNullOrEmpty(basePath) || basePath == "/" ? "/" : basePath;
-            
+
             return (serverUrl, basePath);
         }
         catch (UriFormatException ex)
@@ -74,7 +69,7 @@ public class WebDavClient
             DisplayName = item.DisplayName
         });
     }
-    
+
     public async Task<List<WebDavItem>> RecursivelyListFilesAsync(string webDavPath = "")
     {
         var result = new List<WebDavItem>();
@@ -152,7 +147,7 @@ public class WebDavClient
         await _client.DeleteFolder(folderToDelete.Href);
         return true; // Assuming delete operation was successful
     }
-    
+
     private static string EncodeWebDavUrl(string url)
     {
         // 预检查URL格式
@@ -167,7 +162,7 @@ public class WebDavClient
 
         string[] pathAndQueryParts = pathAndQuery.Split('/');
         string[] encodedParts = Array.ConvertAll(pathAndQueryParts, EncodePossibleNonAsciiCharactersWithoutReencoding);
-        
+
         string result = schemeAndAuthority + string.Join("/", encodedParts);
 
         // 添加末尾斜杠，但需确保它不会出现在已编码的最后一个路径部分
@@ -178,7 +173,7 @@ public class WebDavClient
 
         return result;
     }
-    
+
     private static string EncodePossibleNonAsciiCharactersWithoutReencoding(string part)
     {
         // 检查是否有已编码的百分号（%），如果有则说明该部分可能已编码过
@@ -208,7 +203,7 @@ public class WebDavClient
             return Uri.EscapeDataString(part);
         }
     }
-    
+
 
 }
 

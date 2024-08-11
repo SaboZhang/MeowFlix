@@ -9,5 +9,5 @@ public class MediaServerTable : BaseServerTable
         : base(title, filePath, isActive, serverType)
     {
     }
-    
+
 }

@@ -15,7 +15,7 @@ public class MediaHeaderIconConverter : IValueConverter
             return null;
         }
 
-        var pageType = ((ServerType) value).ToString();
+        var pageType = ((ServerType)value).ToString();
         if (!string.IsNullOrEmpty(pageType))
         {
             var type = _viewTypes.FirstOrDefault(x => x.Item1.Equals(pageType, StringComparison.OrdinalIgnoreCase));

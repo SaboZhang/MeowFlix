@@ -24,7 +24,7 @@ public class BaseMediaTable
 
     public BaseMediaTable()
     {
-        
+
     }
 
     public BaseMediaTable(string title, string filePath, string dateTime, double fileSize, ServerType serverType, string channel, int? year)

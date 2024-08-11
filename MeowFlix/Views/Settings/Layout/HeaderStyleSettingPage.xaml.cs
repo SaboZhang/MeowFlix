@@ -16,6 +16,6 @@ public sealed partial class HeaderStyleSettingPage : Page
     private void HeaderStyleSettingPage_Loaded(object sender, RoutedEventArgs e)
     {
         var headerStyle = Settings.HeaderTextBlockStyle;
-        CmbHeader.SelectedItem = CmbHeader.Items.FirstOrDefault(x => (string) x == headerStyle);
+        CmbHeader.SelectedItem = CmbHeader.Items.FirstOrDefault(x => (string)x == headerStyle);
     }
 }

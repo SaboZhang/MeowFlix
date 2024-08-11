@@ -1,17 +1,13 @@
 ﻿using CommunityToolkit.Labs.WinUI;
-
+using MeowFlix.Database.Tables;
+using MeowFlix.Tools;
 using Nucs.JsonSettings;
 using Nucs.JsonSettings.Autosave;
 using Nucs.JsonSettings.Fluent;
 using Nucs.JsonSettings.Modulation;
 using Nucs.JsonSettings.Modulation.Recovery;
-
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-
-using MeowFlix.Database.Tables;
-using MeowFlix.Tools;
-using MeowFlix.Views.ContentDialogs;
 
 namespace MeowFlix.Common;
 public static partial class AppHelper
@@ -330,11 +326,11 @@ public static partial class AppHelper
         {
             return false;
         }
-                
+
         if (!filePath.StartsWith("http://", StringComparison.OrdinalIgnoreCase) && !filePath.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
         {
             await Task.Run(() => Process.Start("explorer.exe", filePath));
-            return true; 
+            return true;
         }
         return false;
 

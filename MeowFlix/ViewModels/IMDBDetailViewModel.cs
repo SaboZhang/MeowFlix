@@ -1,8 +1,8 @@
-﻿using Microsoft.UI.Xaml.Media.Imaging;
-using Microsoft.UI.Xaml.Media;
+﻿using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using System.Globalization;
-using System.Net.Http.Json;
 using System.Net;
+using System.Net.Http.Json;
 
 namespace MeowFlix.ViewModels;
 public partial class IMDBDetailViewModel : ObservableRecipient, ITitleBarAutoSuggestBoxAware

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using Microsoft.Win32;
-
-namespace MeowFlix.Tools;
+﻿namespace MeowFlix.Tools;
 
 public enum InstalledPlayer
 {
@@ -14,5 +10,5 @@ public enum InstalledPlayer
 
 public class MediaPlayerDetector
 {
-    
+
 }

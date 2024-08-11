@@ -1,26 +1,13 @@
 ﻿using FFmpeg.AutoGen;
 using MeowFlix.Database;
 using MeowFlix.Database.Tables;
-using MeowFlix.Models;
 using MeowFlix.Naming;
-using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Collections;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Xml;
-using Windows.Devices.Power;
-using Windows.Devices.Spi;
 
 namespace MeowFlix.Common;
 public sealed class VideoFileHelper
@@ -135,7 +122,7 @@ public sealed class VideoFileHelper
             return info;
         });
     }
-   
+
     /// <summary>
     /// 视频清晰度
     /// </summary>
@@ -304,7 +291,7 @@ public sealed class VideoFileHelper
         switch (serverType)
         {
             case ServerType.Movies:
-                await ReadMovieNfo(nfoPath,filePath);
+                await ReadMovieNfo(nfoPath, filePath);
                 break;
             case ServerType.Series:
                 ReadSeriesNfo(nfoPath);
@@ -317,7 +304,7 @@ public sealed class VideoFileHelper
 
     }
 
-    private static async Task ReadMovieNfo(string nfoPath,string filePath)
+    private static async Task ReadMovieNfo(string nfoPath, string filePath)
     {
         if (string.IsNullOrEmpty(nfoPath)) return;
         try
@@ -354,7 +341,7 @@ public sealed class VideoFileHelper
                 Genres = GetNodesText(movieNode, "genre"),
                 Actors = GetActors(movieNode, "actor"),
                 StreamDetails = GetStreametails(movieNode),
-                Set = GetNodeText(movieNode,"set/name"),
+                Set = GetNodeText(movieNode, "set/name"),
                 Poster = GetPosterPath(filePath),
                 CreaterTime = DateTime.Now,
                 Outline = outline,
@@ -453,7 +440,7 @@ public sealed class VideoFileHelper
         return node?.InnerText;
     }
 
-    private static string GetNodeTextByAttribute(XmlNode parentNode, string nodeName, string attributeName ,string attribute)
+    private static string GetNodeTextByAttribute(XmlNode parentNode, string nodeName, string attributeName, string attribute)
     {
         string xPath = $"{nodeName}[@{attributeName}='{attribute}']";
         XmlNode node = parentNode.SelectSingleNode(xPath);
@@ -479,7 +466,7 @@ public sealed class VideoFileHelper
         if (subtitleNodes != null)
         {
             SubtitleTable subtitle = new();
-            
+
             foreach (XmlNode subtitleNode in subtitleNodes)
             {
                 subtitle.Codec = GetNodeText(subtitleNode, "codec");
@@ -511,7 +498,7 @@ public sealed class VideoFileHelper
             VideoResolution = GetResolutionLabel(new Size(int.Parse(GetNodeText(videoNode, "width")), int.Parse(GetNodeText(videoNode, "height")))),
         };
 
-        
+
         return streamDetails;
     }
 

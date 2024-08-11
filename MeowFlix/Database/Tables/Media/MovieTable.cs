@@ -11,7 +11,7 @@ public class MovieTable : BaseMediaTable
 
     }
 
-    public MovieTable () { } 
+    public MovieTable() { }
 
     public string? Description { get; set; }
 

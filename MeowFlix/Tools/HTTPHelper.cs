@@ -1,10 +1,7 @@
-﻿using System;
-using System.Net.Http;
+﻿using Microsoft.Extensions.Http.Resilience;
+using Polly;
 using System.Text;
 using System.Text.Json;
-using Microsoft.Extensions.Http;
-using Microsoft.Extensions.Http.Resilience;
-using Polly;
 
 namespace MeowFlix.Tools
 {
@@ -40,7 +37,7 @@ namespace MeowFlix.Tools
 
             HttpClient = new HttpClient(resilienceHandler);
         }
-        
+
         // 提供一个公共静态方法来获取HttpClient实例
         public static HttpClient GetHttpClient()
         {
@@ -48,7 +45,7 @@ namespace MeowFlix.Tools
             // 并且在需要时重新初始化
             return HttpClient;
         }
-        
+
         // 异步请求，返回json串
         public static async Task<string> GetJsonAsync(string url)
         {
@@ -57,16 +54,16 @@ namespace MeowFlix.Tools
             var json = await response.Content.ReadAsStringAsync();
             return json;
         }
-        
+
         // 异步Post请求，返回json串
         public static async Task<string> PostJsonAsync<T>(string url, T data)
         {
-            var jsonPayload = JsonSerializer.Serialize(data); 
+            var jsonPayload = JsonSerializer.Serialize(data);
             var response = await HttpClient.PostAsync(url, new StringContent(jsonPayload, Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
             return result;
         }
-        
+
     }
 }

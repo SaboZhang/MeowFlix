@@ -16,7 +16,7 @@ public sealed partial class MediaDetailPage : Page
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
-        var args = (BaseMediaTable) e.Parameter;
+        var args = (BaseMediaTable)e.Parameter;
         ViewModel.rootMedia = args;
         ViewModel.BreadcrumbBarList?.Clear();
     }

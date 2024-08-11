@@ -1,17 +1,9 @@
-﻿using System.Diagnostics;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Windows;
-
-
-using CommunityToolkit.WinUI.UI;
-
+﻿using CommunityToolkit.WinUI.UI;
 using MeowFlix.Database.Tables;
 using MeowFlix.Tools;
 using MeowFlix.Views.ContentDialogs;
-
+using System.Text;
 using Windows.ApplicationModel.DataTransfer;
-
 using Windows.System;
 
 namespace MeowFlix.ViewModels;
@@ -43,7 +35,7 @@ public partial class BaseViewModel : ObservableRecipient
     [ObservableProperty]
     public string videoPath;
 
-    public string videoUrl { get; set;}
+    public string videoUrl { get; set; }
 
 
 
@@ -114,7 +106,7 @@ public partial class BaseViewModel : ObservableRecipient
         var media = baseMedia as BaseMediaTable;
         var filePath = media.FilePath?.ToString();
         if (!string.IsNullOrEmpty(playerPath))
-        {         
+        {
             if (string.IsNullOrEmpty(filePath))
             {
                 Growl.Error("未找到媒体文件");
@@ -123,7 +115,7 @@ public partial class BaseViewModel : ObservableRecipient
         }
         else if (!string.IsNullOrEmpty(filePath))
         {
-            var type =await LaunchPlayer(filePath);
+            var type = await LaunchPlayer(filePath);
             if (!type)
             {
                 ToastWithAvatar.Instance.SendToast();
@@ -149,9 +141,9 @@ public partial class BaseViewModel : ObservableRecipient
     }
 
     [RelayCommand]
-    public virtual void OnRemoveFile(object baseMedia) 
+    public virtual void OnRemoveFile(object baseMedia)
     {
-        
+
     }
 
     [RelayCommand]
@@ -216,10 +208,10 @@ public partial class BaseViewModel : ObservableRecipient
                 LaunchPlayer(VideoPath, InstalledPlayer.PotPlayer);
                 break;
             case "vlc":
-                LaunchPlayer(VideoPath,InstalledPlayer.VLC);
+                LaunchPlayer(VideoPath, InstalledPlayer.VLC);
                 break;
             case "mpv":
-                LaunchPlayer(VideoPath,InstalledPlayer.MPV);
+                LaunchPlayer(VideoPath, InstalledPlayer.MPV);
                 break;
         }
     }

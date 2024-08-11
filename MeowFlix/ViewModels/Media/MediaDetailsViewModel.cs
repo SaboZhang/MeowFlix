@@ -1,12 +1,10 @@
-﻿using CommunityToolkit.WinUI.Controls;
-using CommunityToolkit.WinUI.UI;
+﻿using CommunityToolkit.WinUI.UI;
 
 using HtmlAgilityPack;
 using MeowFlix.Database;
 using MeowFlix.Database.Tables;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml.Media.Animation;
-using Windows.System;
 
 namespace MeowFlix.ViewModels;
 public partial class MediaDetailsViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAware
@@ -59,13 +57,13 @@ public partial class MediaDetailsViewModel : BaseViewModel, ITitleBarAutoSuggest
     [RelayCommand]
     private void OnBreadCrumbBarItem(BreadcrumbBarItemClickedEventArgs args)
     {
-        var item = (BaseMediaTable) args.Item;
+        var item = (BaseMediaTable)args.Item;
         BreadcrumbBarList.RemoveAt(args.Index + 1);
         dynamicMediaTable = item;
         DownloadDetails(item);
     }
 
-    private async void ViewDetails(BaseMediaTable baseMedia) 
+    private async void ViewDetails(BaseMediaTable baseMedia)
     {
         try
         {
@@ -208,12 +206,12 @@ public partial class MediaDetailsViewModel : BaseViewModel, ITitleBarAutoSuggest
                         if (title.Equals("Home") || title.Equals("dl") ||
                             title.Equals("English") || title.Equals("Series") ||
                             title.Equals("Movie") || title.Contains("Parent Directory") ||
-                            BreadcrumbBarList.Any(x=>x.Title.Equals(FixTitle(title))))
+                            BreadcrumbBarList.Any(x => x.Title.Equals(FixTitle(title))))
                         {
                             continue;
                         }
                     }
-                    
+
                     // list.Add(new BaseMediaTable(FixTitle(title), finalServer, date, FileHelper.GetFileSize(fSize), baseMedia.ServerType));
                 }
             }
@@ -227,7 +225,7 @@ public partial class MediaDetailsViewModel : BaseViewModel, ITitleBarAutoSuggest
             StatusMessage = ex.Message;
             StatusSeverity = InfoBarSeverity.Error;
         }
-        
+
         return list;
     }
 
@@ -271,7 +269,7 @@ public partial class MediaDetailsViewModel : BaseViewModel, ITitleBarAutoSuggest
             StatusMessage = ex.Message;
             StatusSeverity = InfoBarSeverity.Error;
         }
-        
+
         return list;
     }
 

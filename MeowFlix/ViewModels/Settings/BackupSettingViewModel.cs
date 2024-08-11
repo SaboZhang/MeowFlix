@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-using Newtonsoft.Json;
-
-using MeowFlix.Database;
+﻿using MeowFlix.Database;
 using MeowFlix.Database.Tables;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace MeowFlix.ViewModels;
 public partial class BackupSettingViewModel : ObservableObject

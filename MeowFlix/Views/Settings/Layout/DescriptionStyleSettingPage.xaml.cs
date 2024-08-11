@@ -16,6 +16,6 @@ public sealed partial class DescriptionStyleSettingPage : Page
     private void DescriptionStyleSettingPage_Loaded(object sender, RoutedEventArgs e)
     {
         var descriptionStyle = Settings.DescriptionTextBlockStyle;
-        CmbDescription.SelectedItem = CmbDescription.Items.FirstOrDefault(x => (string) x == descriptionStyle);
+        CmbDescription.SelectedItem = CmbDescription.Items.FirstOrDefault(x => (string)x == descriptionStyle);
     }
 }

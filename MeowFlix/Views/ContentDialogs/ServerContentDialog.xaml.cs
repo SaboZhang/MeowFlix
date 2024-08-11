@@ -8,7 +8,7 @@ public sealed partial class ServerContentDialog : ContentDialog
     public string ServerUrl;
 
     public object CmbServerTypeSelectedItem;
-    
+
     public object CmbPathTypeSelectedItem;
 
     public bool ServerActivation;
@@ -20,9 +20,9 @@ public sealed partial class ServerContentDialog : ContentDialog
     public string Password;
 
     public string WebPassWord;
-    
+
     public string WebUserName;
-    
+
     public string WebUrl;
 
     public ServerViewModel ViewModel { get; set; }
@@ -30,7 +30,7 @@ public sealed partial class ServerContentDialog : ContentDialog
     {
         this.InitializeComponent();
         XamlRoot = App.currentWindow.Content.XamlRoot;
-        
+
         Loaded += ServerContentDialog_Loaded;
     }
 

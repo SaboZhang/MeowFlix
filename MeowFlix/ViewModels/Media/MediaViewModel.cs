@@ -1,16 +1,12 @@
-﻿using System.Net;
-using System.Net.Sockets;
+﻿using CommunityToolkit.WinUI.Controls;
 using CommunityToolkit.WinUI.UI;
 using HtmlAgilityPack;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.UI.Dispatching;
-using Microsoft.UI.Xaml.Media.Animation;
-
 using MeowFlix.Database;
 using MeowFlix.Database.Tables;
 using MeowFlix.Views.ContentDialogs;
-using CommunityToolkit.WinUI.Controls;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Xaml.Media.Animation;
 using Newtonsoft.Json;
 
 namespace MeowFlix.ViewModels;
@@ -76,7 +72,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                     }
                     if (!db.Auth.Any(u => u.Username == Constants.DEFAULT_USERNAME))
                     {
-                        await db.Auth.AddAsync(new AuthTable { Username = Constants.DEFAULT_USERNAME, Password = "", IsLocal = true});
+                        await db.Auth.AddAsync(new AuthTable { Username = Constants.DEFAULT_USERNAME, Password = "", IsLocal = true });
                         await db.SaveChangesAsync();
                     }
                     var segments = db.Chanels.Where(x => x.IsActive)
@@ -147,7 +143,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
         IsActive = true;
 
         var index = SegmentedItemSelectedIndex;
-    
+
         if (index >= 0 && index < SegmentedItems.Count)
         {
             var item = SegmentedItems[index];
@@ -155,7 +151,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
 
             channel = selectedValue;
 
-            if (selectedValue == "全部" )
+            if (selectedValue == "全部")
             {
                 channel = "all";
             }
@@ -218,10 +214,10 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                     }
                     switch (PageType)
                     {
-                        case ServerType.Movies when channel.Equals("all") :
-                            media = new(await db.Movies.Where(x => x.FilePath != null && !x.Channel.Equals(Constants.ENCRYPT_CHANNEL) ).ToListAsync());
+                        case ServerType.Movies when channel.Equals("all"):
+                            media = new(await db.Movies.Where(x => x.FilePath != null && !x.Channel.Equals(Constants.ENCRYPT_CHANNEL)).ToListAsync());
                             break;
-                        case ServerType.Movies :
+                        case ServerType.Movies:
                             media = new(await db.Movies.Where(x => x.FilePath != null && x.Channel == channel && !x.Channel.Equals(Constants.ENCRYPT_CHANNEL)).ToListAsync());
                             break;
                         case ServerType.Series when channel.Equals("all"):
@@ -241,7 +237,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                         {
                             DataList.AddRange(media);
                         }
-                        
+
                         DataListACV.SortDescriptions.Add(new SortDescription("Title", SortDirection.Ascending));
                     }
 
@@ -300,7 +296,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                         media = new(await db.Series.Where(x => x.FilePath != null && x.Channel.Equals(Constants.ENCRYPT_CHANNEL)).ToListAsync());
                         break;
                 }
-                
+
                 /*if (media != null && media.Count != 0)
                 {
                     DataList = [];
@@ -334,9 +330,9 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
         }
     }
 
-    public override async void OnRemoveFile(object baseMedia) 
+    public override async void OnRemoveFile(object baseMedia)
     {
-        if (baseMedia == null) 
+        if (baseMedia == null)
         {
             return;
         }
@@ -352,10 +348,10 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
 
         await dialog.ShowAsync();
 
-        
+
     }
 
-    private async void OnDeleteFilePrimaryButton(ContentDialog sender, ContentDialogButtonClickEventArgs args) 
+    private async void OnDeleteFilePrimaryButton(ContentDialog sender, ContentDialogButtonClickEventArgs args)
     {
         IsActive = true;
         try

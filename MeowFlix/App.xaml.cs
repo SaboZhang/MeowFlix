@@ -1,10 +1,8 @@
-﻿using System.Net;
-
+﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter;
-using WinUICommunity;
 using Microsoft.Windows.AppNotifications;
+using System.Net;
 
 namespace MeowFlix;
 public partial class App : Application

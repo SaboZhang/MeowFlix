@@ -29,7 +29,7 @@ public sealed partial class MediaPage : Page
         var headerIcon = conv.Convert(PageType, null, null, null);
         if (headerIcon != null)
         {
-            item.HeaderIcon = (BitmapIcon) headerIcon;
+            item.HeaderIcon = (BitmapIcon)headerIcon;
         }
     }
 }

@@ -7,7 +7,7 @@ public class Bool2IconConverter : IValueConverter
         {
             return isActive
                             ? new BitmapIcon { UriSource = new Uri("ms-appx:///Assets/Fluent/active.png"), ShowAsMonochrome = false }
-                            : (object) new BitmapIcon { UriSource = new Uri("ms-appx:///Assets/Fluent/deActive.png"), ShowAsMonochrome = false };
+                            : (object)new BitmapIcon { UriSource = new Uri("ms-appx:///Assets/Fluent/deActive.png"), ShowAsMonochrome = false };
         }
         return null;
     }

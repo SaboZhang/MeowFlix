@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml.Media;
-
-namespace MeowFlix.ViewModels;
+﻿namespace MeowFlix.ViewModels;
 public partial class MainViewModel : ObservableObject
 {
     public IJsonNavigationViewService JsonNavigationViewService;

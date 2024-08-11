@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.WinUI.UI;
+using MeowFlix.Database;
+using MeowFlix.Database.Tables;
+using MeowFlix.Naming;
+using MeowFlix.Tools;
+using MeowFlix.Views.ContentDialogs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Dispatching;
 using Newtonsoft.Json;
-using MeowFlix.Database;
-using MeowFlix.Database.Tables;
-using MeowFlix.Views.ContentDialogs;
-using MeowFlix.Naming;
-using MeowFlix.Tools;
 
 namespace MeowFlix.ViewModels;
 
@@ -14,37 +14,37 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
 {
     private readonly DispatcherQueue dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
-    [ObservableProperty] 
+    [ObservableProperty]
     public ObservableCollection<BaseServerTable> serverList;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     public AdvancedCollectionView serverListACV;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private int segmentedSelectedIndex = 0;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private string infoBarTitle;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private bool infoBarIsOpen;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private InfoBarSeverity infoBarSeverity;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     public string floderPath;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     public bool isPrivate = false;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private bool pathTypeSelectedIndex = true;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private bool webDavIsShow = false;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private object cmbPathTypeSelectedItem;
 
     private string tempQuery;
@@ -171,7 +171,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
             Logger?.Error(ex, "ServerViewModel: OnSelectMediaPath");
         }
     }
-    
+
     private async void OnAddServerPrimaryButton(ContentDialog sender, ContentDialogButtonClickEventArgs args)
     {
         IsActive = true;
@@ -190,7 +190,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
                 WebDavClient webDavClient = new(dialog.WebUrl, dialog.WebUserName, dialog.WebPassWord);
                 var files = await webDavClient.RecursivelyListFilesAsync();
             }
-            
+
             await using var db = new AppDbContext();
             await AddToDatabase(db, sender, args);
 
@@ -221,7 +221,7 @@ public partial class ServerViewModel : ObservableRecipient, ITitleBarAutoSuggest
 
         return true;
     }
-    
+
     // 检查WebDav相关输入是否为空
     private bool IsDialogInputEmpty(ServerContentDialog dialog)
     {

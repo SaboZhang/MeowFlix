@@ -21,9 +21,9 @@ public class AppConfig : NotifiyingJsonSettings, IVersionable
     }
 
     public virtual bool UseDeveloperMode { get; set; }
-    #if DEBUG
+#if DEBUG
         = true;
-    #endif
+#endif
     public virtual bool IsFileOpenInBrowser { get; set; }
     public virtual bool HasHyperLinkBorderThickness { get; set; }
     public virtual bool UseTruncateInHeader { get; set; }

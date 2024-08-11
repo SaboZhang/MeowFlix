@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using MeowFlix.Database.Tables;
 using Microsoft.EntityFrameworkCore;
-
-using MeowFlix.Database.Tables;
-
-using Windows.UI;
 
 namespace MeowFlix.Database;
 public class AppDbContext : DbContext

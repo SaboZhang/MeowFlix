@@ -1,9 +1,6 @@
-﻿using System.Diagnostics;
-using System.Windows.Input;
-
-using MeowFlix.Database.Tables;
-using Microsoft.UI.Xaml.Controls;
+﻿using MeowFlix.Database.Tables;
 using Microsoft.UI.Xaml.Media.Imaging;
+using System.Windows.Input;
 using Windows.System;
 
 namespace MeowFlix.Views;
@@ -14,12 +11,12 @@ public sealed partial class ItemUserControl : UserControl
 
     public CornerRadius SettingsCardCornerRadius
     {
-        get => (CornerRadius) GetValue(SettingsCardCornerRadiusProperty);
+        get => (CornerRadius)GetValue(SettingsCardCornerRadiusProperty);
         set => SetValue(SettingsCardCornerRadiusProperty, value);
     }
     public BaseMediaTable BaseMedia
     {
-        get => (BaseMediaTable) GetValue(BaseMediaProperty);
+        get => (BaseMediaTable)GetValue(BaseMediaProperty);
         set => SetValue(BaseMediaProperty, value);
     }
 
@@ -31,37 +28,37 @@ public sealed partial class ItemUserControl : UserControl
 
     public ICommand SettingsCardCommand
     {
-        get => (ICommand) GetValue(SettingsCardCommandProperty);
+        get => (ICommand)GetValue(SettingsCardCommandProperty);
         set => SetValue(SettingsCardCommandProperty, value);
     }
 
     public ICommand SettingsCardDoubleClickCommand
     {
-        get => (ICommand) GetValue(SettingsCardDoubleClickCommandProperty);
+        get => (ICommand)GetValue(SettingsCardDoubleClickCommandProperty);
         set => SetValue(SettingsCardDoubleClickCommandProperty, value);
     }
 
     public string Title
     {
-        get => (string) GetValue(TitleProperty);
+        get => (string)GetValue(TitleProperty);
         set => SetValue(TitleProperty, value);
     }
 
     public string FilePath
     {
-        get => (string) GetValue(ServerProperty);
+        get => (string)GetValue(ServerProperty);
         set => SetValue(ServerProperty, value);
     }
 
     public string DateTime
     {
-        get => (string) GetValue(DateTimeProperty);
+        get => (string)GetValue(DateTimeProperty);
         set => SetValue(DateTimeProperty, value);
     }
 
     public string FileSize
     {
-        get => (string) GetValue(FileSizeProperty);
+        get => (string)GetValue(FileSizeProperty);
         set => SetValue(FileSizeProperty, value);
     }
 
@@ -79,13 +76,13 @@ public sealed partial class ItemUserControl : UserControl
 
     public IconElement HeaderIcon
     {
-        get => (IconElement) GetValue(HeaderIconProperty);
+        get => (IconElement)GetValue(HeaderIconProperty);
         set => SetValue(HeaderIconProperty, value);
     }
 
     public IconElement ActionIcon
     {
-        get => (IconElement) GetValue(ActionIconProperty);
+        get => (IconElement)GetValue(ActionIconProperty);
         set => SetValue(ActionIconProperty, value);
     }
 
