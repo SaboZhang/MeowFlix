@@ -157,6 +157,8 @@
             </i:Interaction.Behaviors>
         </views:NoItemUserControl>
 
+        <wuc:ProgressRing Grid.Row="2" IsActive="{x:Bind ViewModel.IsActive}" />
+
         <InfoBar x:Name="Status"
                  Title="{x:Bind ViewModel.InfoBarTitle, Mode=OneWay}"
                  Grid.Row="3"
@@ -164,8 +166,6 @@
                  IsClosable="True"
                  IsOpen="{x:Bind ViewModel.InfoBarIsOpen, Mode=OneWay}"
                  Severity="{x:Bind ViewModel.InfoBarSeverity, Mode=OneWay}" />
-        <ProgressRing Grid.Row="2"
-              IsActive="{x:Bind ViewModel.IsActive}" />
     </Grid>
     
 </Page>

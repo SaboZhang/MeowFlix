@@ -61,6 +61,13 @@
             </i:Interaction.Behaviors>
         </community:Segmented>
 
+        <views:NoItemUserControl Grid.Row="1"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Count="{x:Bind ViewModel.DataListACV.Count}"
+                         Message="暂无数据，请刷新！"
+                         Visibility="{x:Bind ViewModel.IsActive, Mode=OneWay, Converter={StaticResource Bool2Negation2VisibilityConverter}}" />
+
         <Button Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#00000000">
             <Button.Flyout>
                 <Flyout>

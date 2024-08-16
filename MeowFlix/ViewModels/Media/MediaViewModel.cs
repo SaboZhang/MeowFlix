@@ -70,11 +70,6 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                         }
                         await db.SaveChangesAsync();
                     }
-                    if (!db.Auth.Any(u => u.Username == Constants.DEFAULT_USERNAME))
-                    {
-                        await db.Auth.AddAsync(new AuthTable { Username = Constants.DEFAULT_USERNAME, Password = "", IsLocal = true });
-                        await db.SaveChangesAsync();
-                    }
                     var segments = db.Chanels.Where(x => x.IsActive)
                         .Select(x => new SegmentedItem { Content = x.Title, Icon = new FontIcon { Glyph = x.FilePath } });
 
@@ -204,13 +199,9 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                     List<BaseMediaTable> media = null;
                     if (channel.Equals(Constants.ENCRYPT_CHANNEL))
                     {
-                        var dialog = new AuthDialog
-                        {
-                            ThemeService = themeService,
-                            Password = string.Empty
-                        };
-                        dialog.PrimaryButtonClick += OnAuthPrimaryButton;
-                        await dialog.ShowAsync();
+                        var result = await CredentialHelper.RequestWindowsPIN("请进行隐私验证");
+                        OnAuthPrimaryButton(result);
+                        return;
                     }
                     switch (PageType)
                     {
@@ -261,7 +252,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
         });
     }
 
-    private async void OnAuthPrimaryButton(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+    private async void OnAuthPrimaryButton(bool auth)
     {
         try
         {
@@ -269,23 +260,9 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
             IsStatusOpen = true;
             StatusSeverity = InfoBarSeverity.Informational;
             StatusTitle = "加载媒体文件中，请稍后！";
-            var dialog = sender as AuthDialog;
-            if (!string.IsNullOrEmpty(dialog.Password.Trim()))
+            if (auth)
             {
                 var db = new AppDbContext();
-                var passwordHash = await db.Auth.Where(p => p.Username == Constants.DEFAULT_USERNAME).Select(p => p.Password).FirstOrDefaultAsync();
-                if (string.IsNullOrEmpty(passwordHash))
-                {
-                    Growl.Error("请先设置隐私密码");
-                    return;
-                }
-                var pass = BCrypt.Net.BCrypt.Verify(dialog.Password, passwordHash);
-                if (!pass)
-                {
-                    var defaultTokenItem = SegmentedItems.FirstOrDefault(x => x.Content.ToString().Contains(Constants.ENCRYPT_CHANNEL, StringComparison.OrdinalIgnoreCase));
-                    SegmentedItemSelectedIndex = SegmentedItems.IndexOf(defaultTokenItem);
-                    Growl.Error("密码错误");
-                }
                 List<BaseMediaTable> media = null;
                 switch (PageType)
                 {
@@ -297,18 +274,6 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                         break;
                 }
 
-                /*if (media != null && media.Count != 0)
-                {
-                    DataList = [];
-                    DataListACV = new AdvancedCollectionView(DataList, true);
-
-                    using (DataListACV.DeferRefresh())
-                    {
-                        DataList.AddRange(media);
-                    }
-
-                    DataListACV.SortDescriptions.Add(new SortDescription("Title", SortDirection.Ascending));
-                }*/
                 DataList = [];
                 DataListACV = new AdvancedCollectionView(DataList, true);
 
@@ -318,14 +283,18 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
                 }
 
                 DataListACV.SortDescriptions.Add(new SortDescription("Title", SortDirection.Ascending));
-                IsActive = false;
-                StatusSeverity = InfoBarSeverity.Success;
-                StatusTitle = $"共 ({DataList?.Count}) 个筛选结果";
-                StatusMessage = "";
             }
+            IsActive = false;
+            StatusSeverity = InfoBarSeverity.Success;
+            StatusTitle = $"共 ({DataList?.Count}) 个筛选结果";
+            StatusMessage = "";
         }
         catch (Exception ex)
         {
+            IsActive = false;
+            StatusSeverity = InfoBarSeverity.Error;
+            StatusTitle = "Error";
+            StatusMessage = ex.Message;
             Logger?.Error(ex, "MediaViewModel: OnAuthPrimaryButton");
         }
     }

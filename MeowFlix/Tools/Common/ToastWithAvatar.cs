@@ -21,6 +21,8 @@ public class ToastWithAvatar : IScenario
     public int ScenarioId { get; set; } = 1;
     public string ScenarioName { get; set; } = "系统提示";
 
+    public string Description { get; set; } = "";
+
     public void NotificationReceived(AppNotificationActivatedEventArgs notificationActivatedEventArgs)
     {
         var notification = NotificationHelper.GetNotificationForWithAvatar(ScenarioName, notificationActivatedEventArgs);
@@ -28,13 +30,12 @@ public class ToastWithAvatar : IScenario
 
     public bool SendToast()
     {
-        string str = NotificationHelper.MakeScenarioIdToken(ScenarioId);
-        return ScenarioHelper.SendToast(new string((ReadOnlySpan<char>)("<toast launch = \"action=ToastClick&amp;" +
-                                                                        str +
-                                                                        "\"><visual><binding template = \"ToastGeneric\"><image placement = \"appLogoOverride\" hint-crop=\"circle\" src = \"" +
-                                                                        PathHelper.GetFullPathToAsset("Logo.png") +
-                                                                        "\"/><text>" + ScenarioName + "</text><text>" +
-                                                                        "网络路径无法使用默认播放器播放，请在弹窗选择拥有的播放器播放" +
-                                                                        "</text></binding></visual></toast>")));
+        return SendToastWithAvatar(ScenarioId, ScenarioName, Description);
+    }
+
+    public static bool SendToastWithAvatar(int scenarioId, string scenarioName, string message)
+    {
+        string text = NotificationHelper.MakeScenarioIdToken(scenarioId);
+        return ScenarioHelper.SendToast(new string("<toast launch = \"action=ToastClick&amp;" + text + "\"><visual><binding template = \"ToastGeneric\"><image placement = \"appLogoOverride\" hint-crop=\"circle\" src = \"" + PathHelper.GetFullPathToAsset("Logo.png") + "\"/><text>" + scenarioName + "</text><text>" + message + "</text></binding></visual></toast>"));
     }
 }

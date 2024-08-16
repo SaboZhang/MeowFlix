@@ -118,6 +118,7 @@ public partial class BaseViewModel : ObservableRecipient
             var type = await LaunchPlayer(filePath);
             if (!type)
             {
+                ToastWithAvatar.Instance.Description = "网络路径无法通过默认播放器播放，请选择对应的播放器";
                 ToastWithAvatar.Instance.SendToast();
                 var dialog = new SelectPlayerDialog
                 {
