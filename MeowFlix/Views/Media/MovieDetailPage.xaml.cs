@@ -2,11 +2,11 @@
 
 namespace MeowFlix.Views;
 
-public sealed partial class MediaDetailPage : Page
+public sealed partial class MovieDetailPage : Page
 {
-    public static MediaDetailPage Instance { get; set; }
+    public static MovieDetailPage Instance { get; set; }
     public MediaDetailsViewModel ViewModel { get; }
-    public MediaDetailPage()
+    public MovieDetailPage()
     {
         ViewModel = App.GetService<MediaDetailsViewModel>();
         this.InitializeComponent();

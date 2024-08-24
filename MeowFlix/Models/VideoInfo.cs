@@ -12,7 +12,7 @@
 
         public long Size { get; set; }
 
-        public FFmpegInfo? FfMpegInfo { get; set; }
+        public MediaMeta? MediaMeta { get; set; }
 
         public int? Season { get; set; }
 
@@ -20,14 +20,14 @@
 
 
 
-        public VideoInfo(string path, string name, string fileName, int? year, long size, int? season, int? episode, FFmpegInfo ffMpegInfo)
+        public VideoInfo(string path, string name, string fileName, int? year, long size, int? season, int? episode, MediaMeta mediaMeta)
         {
             Path = path;
             Name = name;
             FileName = fileName;
             Year = year;
             Size = size;
-            FfMpegInfo = ffMpegInfo;
+            this.MediaMeta = mediaMeta;
             Season = season;
             Episode = episode;
         }

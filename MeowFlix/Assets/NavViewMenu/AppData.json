@@ -19,7 +19,7 @@
           "HideItem": true
         },
         {
-          "UniqueId": "MeowFlix.Views.MediaPage",
+          "UniqueId": "MeowFlix.Views.MoviePage",
           "Title": "电影",
           "Parameter": "Movies",
           "Subtitle": "刮削管理本地珍藏的电影",
@@ -28,7 +28,7 @@
           "IsUpdated": true
         },
         {
-          "UniqueId": "MeowFlix.Views.MediaPage",
+          "UniqueId": "MeowFlix.Views.TvShowPage",
           "Title": "剧集",
           "Parameter": "Series",
           "Subtitle": "刮削管理本地收藏的剧集",

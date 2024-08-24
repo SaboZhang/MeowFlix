@@ -1,13 +1,17 @@
 ﻿using FFmpeg.AutoGen;
+using FFMpegCore;
 using MeowFlix.Database;
 using MeowFlix.Database.Tables;
 using MeowFlix.Naming;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
+using Unosquare.FFME;
+using Windows.UI.ViewManagement;
 
 namespace MeowFlix.Common;
 public sealed class VideoFileHelper
@@ -69,9 +73,9 @@ public sealed class VideoFileHelper
             }
             var fileInfo = new FileInfo(file);
             var fileSize = fileInfo.Length;
-            var ffmpegInfo = await GetVideoCodecAsync(file);
+            var mediaMeta = await GetVideoMediaMetaAsync(file);
 
-            var videoInfo = new VideoInfo(file, mediaName, fileName, year, fileSize, season, episode, ffmpegInfo);
+            var videoInfo = new VideoInfo(file, mediaName, fileName, year, fileSize, season, episode, mediaMeta);
             videoInfos.Add(videoInfo);
 
             return videoInfos;
@@ -112,6 +116,51 @@ public sealed class VideoFileHelper
                 info.SubtitleLanguage = videoStrem.GetVideoSubtitles();
                 info.Quality = GetResolutionLabel(videoStrem.FrameSize);
                 info.ChannelsCount = videoStrem.GetVideoChannelCount();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"解析文件{path}时出错");
+                Logger.Error(ex.Message);
+            }
+
+            return info;
+        });
+    }
+
+    private static Task<MediaMeta> GetVideoMediaMetaAsync(string path)
+    {
+        if (string.IsNullOrEmpty(path))
+        {
+            return Task.FromResult<MediaMeta>(null);
+        }
+
+        return Task.Run(() =>
+        {
+            var info = new MediaMeta();
+            
+            try
+            {
+                var FFmpegFolderPath = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + "\\FFmpeg\\x64");
+                Library.FFmpegDirectory = FFmpegFolderPath;
+                Library.EnableWpfMultiThreadedVideo = true;
+                GlobalFFOptions.Configure(new FFOptions
+                {
+                    BinaryFolder = FFmpegFolderPath,
+                    Encoding = Encoding.UTF8
+                });
+
+                //int valueOrDefault = (this?.PrimaryVideoStream?.Width).GetValueOrDefault();
+                //int valueOrDefault2 = (this?.PrimaryVideoStream?.Height).GetValueOrDefault();
+                var mediaInfo = FFProbe.Analyse(path);
+                info.Duration = mediaInfo.Duration;
+                info.AudioStreams = mediaInfo.AudioStreams;
+                info.VideoStreams = mediaInfo.VideoStreams;
+                info.SubtitleStreams = mediaInfo.SubtitleStreams;
+                info.Format = mediaInfo.Format;
+                info.PrimaryAudioStream = mediaInfo.PrimaryAudioStream;
+                info.PrimaryVideoStream = mediaInfo.PrimaryVideoStream;
+                info.PrimarySubtitleStream = mediaInfo.PrimarySubtitleStream;
+                
             }
             catch (Exception ex)
             {

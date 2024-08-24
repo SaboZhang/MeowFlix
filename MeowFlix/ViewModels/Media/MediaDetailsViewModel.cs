@@ -51,7 +51,7 @@ public partial class MediaDetailsViewModel : BaseViewModel, ITitleBarAutoSuggest
             ServerType = PageType
         };
 
-        JsonNavigationViewService.NavigateTo(typeof(MediaDetailPage), media, false, new DrillInNavigationTransitionInfo());
+        JsonNavigationViewService.NavigateTo(typeof(MovieDetailPage), media, false, new DrillInNavigationTransitionInfo());
     }
 
     [RelayCommand]

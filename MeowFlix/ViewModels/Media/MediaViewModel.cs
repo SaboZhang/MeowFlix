@@ -96,7 +96,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
             {
                 try
                 {
-                    PageType = MediaPage.Instance.PageType;
+                    PageType = MoviePage.Instance.PageType;
                     using var db = new AppDbContext();
                     if (!db.Storages.Any())
                     {
@@ -168,7 +168,7 @@ public partial class MediaViewModel : BaseViewModel, ITitleBarAutoSuggestBoxAwar
             ServerType = PageType
         };
 
-        JsonNavigationViewService.NavigateTo(typeof(MediaDetailPage), media, false, new DrillInNavigationTransitionInfo());
+        JsonNavigationViewService.NavigateTo(typeof(MovieDetailPage), media, false, new DrillInNavigationTransitionInfo());
 
     }
 

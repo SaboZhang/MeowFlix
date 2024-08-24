@@ -1,4 +1,6 @@
-﻿namespace MeowFlix.Views;
+﻿using MeowFlix.Views.Media;
+
+namespace MeowFlix.Views;
 
 public sealed partial class MainPage : Page
 {
@@ -16,12 +18,12 @@ public sealed partial class MainPage : Page
         NavFrame.Navigating += (s, e) =>
         {
             var page = NavFrame.Content as Page;
-            if (page != null && e.SourcePageType != typeof(MediaDetailPage))
+            if (page != null && e.SourcePageType != typeof(MovieDetailPage))
             {
                 page.NavigationCacheMode = NavigationCacheMode.Disabled;
-                if (MediaPage.Instance != null && CanDisableCache(e.Parameter, MediaPage.Instance.PageType.ToString()))
+                if (MoviePage.Instance != null && CanDisableCache(e.Parameter, MoviePage.Instance.PageType.ToString()))
                 {
-                    MediaPage.Instance.NavigationCacheMode = NavigationCacheMode.Disabled;
+                    MoviePage.Instance.NavigationCacheMode = NavigationCacheMode.Disabled;
                 }
             }
         };
